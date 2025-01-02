@@ -5,6 +5,8 @@ import 'dotenv/config';
 import jwt from 'jsonwebtoken';
 import { generateOtp } from '../utils/generateOtp.js';
 import  { sendMail } from '../utils/sendMail.js'
+// import { sendVerificationEmail } from '../utils/verification.js';
+import { uploadToCloudinary } from '../utils/cloudinary.js';
 
 export const Register = async (req, res) => {
     const {name, username, email, phone, gender} = req.body;
@@ -52,6 +54,7 @@ export const Register = async (req, res) => {
         });
 
         await newUser.save();
+        // await sendVerificationEmail(newUser._id, newUser.email);
 
         res.status(201).send({message: "User registered successfully", newUser});
 
@@ -221,7 +224,9 @@ export async function verifyOtp(req, res){
             username: user.username,
             email: user.email,
             phone: user.phone,
-            gender: user.gender
+            gender: user.gender,
+            bio: user.bio,
+            profilePicture: user.profilePicture
         };
 
         res.status(200).send(profile);
@@ -231,14 +236,15 @@ export async function verifyOtp(req, res){
   }
 
   export const editProfile = async (req, res) => {
-    const { name, username, email, phone, gender } = req.body;
+    const { name, username, email, phone, gender, bio } = req.body;
     try {
          await User.findByIdAndUpdate(req.user._id, {
             name,
             username,
             email,
             phone,
-            gender
+            gender,
+            bio
         });
 
 
@@ -269,5 +275,72 @@ export async function verifyOtp(req, res){
          res.send({ message: "User with the given ID deleted" });
     } catch (error) {
          res.status(500).send({message: "Error deleting user", error});
+    }
+}
+
+export const uploadProfilePicture = async (req, res) => {
+    try {
+        const imageObj = await uploadToCloudinary(req.file.buffer);
+
+        const user = await User.findById(req.user._id);
+
+        if (!user) {
+            return res.status(404).json({ message: 'User not found.' });
+        }
+
+        user.profilePicture = imageObj.secure_url;
+
+        await user.save();
+
+        res.status(200).json({
+            message: 'Profile picture uploaded successfully!',
+            profilePicture: user.profilePicture,
+        });
+    } catch (error) {
+        res.status(500).json({ message: 'An error occurred while uploading the profile picture.', error });
+    }
+}
+
+export const getProfilePicture = async (req, res) => {
+    try {
+        const user = await User.findById(req.user._id);
+        if(!user){
+            return res.status(404).send({message: "user not found"});
+        }
+
+        if (!user.profilePicture) {
+            return res.status(404).send({ message: "Profile picture not found" });
+        }
+
+        return res.status(200).send({
+            message: "Profile picture retrieved successfully",
+            profilePicture: user.profilePicture,
+        });
+    } catch (error) {
+        return res.status(500).send({
+            message: "An error occurred while retrieving the profile picture",
+            error: error.message,
+        });
+    }
+}
+
+export const deleteProfilePicture = async (req, res) => {
+    try {
+        const user = await User.findById(req.user._id);
+        
+        if(!user){
+            return res.status(404).send({message: "User not found"});
+        }
+
+        if(!user.profilePicture){
+            return res.status(404).send({message: "Profile picture is not found for this user"});
+        }
+
+        user.profilePicture = null;
+        await user.save();
+
+        return res.status(200).send({ message: "Profile picture deleted successfully" });
+    } catch (error) {
+        res.status(500).send({message: "Error in deleting profile picture"});
     }
 }

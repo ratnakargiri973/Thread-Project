@@ -28,8 +28,16 @@ const userSchema = new mongoose.Schema({
     gender:{
         type: String
     },
+    bio: {
+        type: String,
+        default: null
+    },
+    profilePicture: {
+        type: String,
+        default: null
+    },
     otp: {
-        type: Number,
+        type: String,
         default: null
     },
     otpIsValid: {

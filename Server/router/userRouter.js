@@ -1,16 +1,20 @@
 import express from 'express';
 import { 
     changePassword,
+    deleteProfilePicture,
     deleteUser,
     editProfile,
     forgotPassword,
+        getProfilePicture,
         login, 
         logout, 
         profile, 
         Register, 
+        uploadProfilePicture, 
         verifyOtp
     } from '../controller/userController.js';
-import { protectRouter } from '../middlewares/auth.js';
+import { protectRoute } from '../middlewares/auth.js';
+import upload from '../middlewares/multer.js';
 
 const userRouter = express.Router();
 
@@ -22,8 +26,11 @@ userRouter.post('/forgot-password', forgotPassword);
 userRouter.post('/verify-otp', verifyOtp);
 userRouter.post('/change-password', changePassword);
 
-userRouter.get('/profile', protectRouter, profile);
-userRouter.put('/edit-profile', protectRouter, editProfile);
+userRouter.get('/profile', protectRoute, profile);
+userRouter.put('/edit-profile', protectRoute, editProfile);
 userRouter.delete('/delete/:id', deleteUser);
 
+userRouter.post('/profile-picture', protectRoute, upload.single("image"), uploadProfilePicture);
+userRouter.get('/profile-picture', protectRoute, getProfilePicture);
+userRouter.delete('/profile-picture', protectRoute, deleteProfilePicture);
 export default userRouter;
