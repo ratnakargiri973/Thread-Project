@@ -7,7 +7,7 @@ import { useAuth } from '../contexts/Auth'
 import ProfilePicture from './ProfilePicture';
 import instance from '../axiosConfig';
 import useProfile from '../hooks/useProfile';
-// import { profileContext } from '../contexts/ProfileContext';
+import { FaUserFriends } from "react-icons/fa";
 
 function Header() {
     
@@ -59,6 +59,7 @@ function Header() {
       <div className='w-auto'>
         <ul className='flex justify-center items-center text-white gap-4'>
           <Link className='text-2xl'><IoIosHome /></Link>
+          <Link className='text-2xl' to="/users"><FaUserFriends /></Link>
           <Link className='text-xl'><SiMessenger /></Link>
           <li className="relative" ref={dropdownRef}>
               <button

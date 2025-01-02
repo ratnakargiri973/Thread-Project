@@ -344,3 +344,29 @@ export const deleteProfilePicture = async (req, res) => {
         res.status(500).send({message: "Error in deleting profile picture"});
     }
 }
+
+export const getAllUsers = async (req, res) => {
+    try {
+        const allUsers = await User.find();
+
+       const users = allUsers.filter((user) => user._id.toString() !== req.user._id.toString() );
+
+        res.status(200).send({message: "Success", users});
+    } catch (error) {
+        res.status(500).send({message: "Error in fetching users"});
+    }
+}
+
+export const getSingleUser = async (req, res) => {
+    const {id} = req.params;
+    try {
+        const user = await User.findById(id);
+        if(!user){
+            return res.status(404).send({message: "User not found"});
+        }
+
+        res.status(200).send({message: "Success", user});
+    } catch (error) {
+        res.status(500).send({message: "Error fetching particular user"});
+    }
+}

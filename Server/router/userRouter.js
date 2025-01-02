@@ -5,7 +5,9 @@ import {
     deleteUser,
     editProfile,
     forgotPassword,
+        getAllUsers,
         getProfilePicture,
+        getSingleUser,
         login, 
         logout, 
         profile, 
@@ -33,4 +35,8 @@ userRouter.delete('/delete/:id', deleteUser);
 userRouter.post('/profile-picture', protectRoute, upload.single("image"), uploadProfilePicture);
 userRouter.get('/profile-picture', protectRoute, getProfilePicture);
 userRouter.delete('/profile-picture', protectRoute, deleteProfilePicture);
+
+
+userRouter.get('/', protectRoute, getAllUsers);
+userRouter.get('/:id',protectRoute, getSingleUser);
 export default userRouter;

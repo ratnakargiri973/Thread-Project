@@ -12,6 +12,8 @@ import VerifyOtp from './pages/VerifyOtp'
 import ChangePassword from './pages/ChangePassword'
 import ProfilePicture from './components/ProfilePicture'
 import ProfileContext from './contexts/ProfileContext'
+import Users from './pages/Users'
+import SingleUser from './pages/singleUser'
 
 function AppWrapper(){
   return(
@@ -62,6 +64,14 @@ function App() {
       {
         path: "/profile-picture",
         element: <ProfilePicture />
+      },
+      {
+        path: "/users",
+        element: <Users />
+      },
+      {
+        path: "/user/:id",
+        element: <SingleUser />
       }
     ]
   }])
