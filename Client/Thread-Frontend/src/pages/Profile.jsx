@@ -7,14 +7,19 @@ import ProfilePicture from '../components/ProfilePicture';
 
 function Profile() {
     const [data, setData] = useState({});
-    // const [message, setMessage] = useState(null);
     const [changes, setChanges] = useState(false);
+    const [followersCount, setFollowersCount] = useState(0);
+    const [followingsCount, setFollowingsCount] = useState(0);
+
     const notify = () => toast("Your Profile has been updated !");
 
     const navigate = useNavigate();
 
     useEffect(() => {
         fetchData();
+    }, []);
+    useEffect(() => {
+        getFollowersAndFollowingCount();
     }, []);
 
     async function fetchData(){
@@ -29,6 +34,17 @@ function Profile() {
             setData({});
         }
     }
+
+    async function getFollowersAndFollowingCount(){
+        try {
+            const response = await instance.get("/follower/count");
+            setFollowersCount(response.data.totalFollowers);
+            setFollowingsCount(response.data.totalFollowings);
+    
+        } catch (error) {
+            console.log(error);
+        }
+      }
 
     function handleChange(e){
         const {name, value} = e.target;
@@ -121,7 +137,22 @@ function Profile() {
                 </div>
             </form>
         )}
+        <div className='flex flex-col justify-between items-center shadow-lg bg-pink-200 p-16 rounded-xl'>
+        <h1 className="text-xl font-bold mb-4">My Profile</h1>
+        <div className='flex justify-between items-center gap-8'>
         <ProfilePicture />
+       <div className='w-1/2 flex justify-center gap-8 items-center pb-12'>
+            <div className='flex flex-col gap-2 justify-center items-center'>
+                       <span>{followersCount}</span>
+                        <Link className='font-bold'>Followers</Link>
+            </div>
+            <div className='flex flex-col gap-2 justify-center items-center'>
+                       <span>{followingsCount}</span>
+                       <Link className='font-bold'>Following</Link>
+            </div>
+        </div>
+        </div>
+        </div>
       </main>
     </div>
     <ToastContainer

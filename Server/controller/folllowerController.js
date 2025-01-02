@@ -70,6 +70,22 @@ export const followersAndFollowingsCount = async (req, res) => {
     }
 }
 
+export const followerAndFollowingsCountProfile = async (req, res) => {
+    try {
+        const user = await User.findById(req.user._id);
+
+        if(!user){
+            return res.status(404).send({message: "User not found"});
+        }
+        const totalFollowers = user.followers.length;
+        const totalFollowings = user.followings.length;
+
+        res.status(200).send({message: "Success", totalFollowers, totalFollowings});
+    } catch (error) {
+        res.status(500).send({message: "Failed to get followers and followings total count"})
+    }
+}
+
 export const getFollowStatus = async (req, res) => {
     const { id } = req.params;
     try {
