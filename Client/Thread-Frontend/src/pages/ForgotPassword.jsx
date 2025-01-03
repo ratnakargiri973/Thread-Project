@@ -17,9 +17,9 @@ function ForgotPassword() {
     };
     
   return (
-    <div className='w-full h-full flex flex-col justify-center items-center gap-2'>
+    <div className='w-full min-h-screen bg-gray-300 flex flex-col justify-center items-center gap-2'>
+      <form onSubmit={handleSubmit} className='flex  flex-col gap-4 bg-pink-300 px-12 py-8 rounded'>
       <h2 className='font-bold text-2xl'>Forgot Password</h2>
-      <form onSubmit={handleSubmit} className='flex gap-2'>
         <input
           type="text"
           placeholder="Enter your username"

@@ -46,7 +46,7 @@ function Register() {
   }
 
   return (
-    <div className="w-full h-full flex justify-center items-center text-black">
+    <div className="w-full min-h-screen flex justify-center items-center text-black bg-gray-300">
       <div
         className="bg-pink-300
       flex justify-center items-center flex-col p-4 rounded-xl gap-3 w-1/4"
@@ -121,6 +121,7 @@ function Register() {
               <select name="gender" id=""
                       className="rounded p-1.5 border-none outline-none w-10/12 focus:shadow-md focus:shadow-lime-400"
                       onChange={handleChange}>
+                <option value="Select">Select</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
               </select>

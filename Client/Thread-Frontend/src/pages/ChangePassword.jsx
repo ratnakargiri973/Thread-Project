@@ -15,9 +15,10 @@ function ChangePassword() {
       navigate("/login");
     };
   return (
-    <div className='w-full h-full flex flex-col justify-center items-center'>
+    <div className='w-full min-h-screen flex flex-col justify-center items-center bg-gray-300'>
+      
+      <form onSubmit={handleSubmit} className='flex  flex-col gap-4 bg-pink-300 px-12 py-8 rounded'>
       <h2 className='font-bold text-2xl'>Change Password</h2>
-      <form onSubmit={handleSubmit} className='flex gap-2 justify-center items-center'>
         <input
           type="text"
           placeholder="Enter your username"

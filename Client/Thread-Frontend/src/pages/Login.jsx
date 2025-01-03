@@ -43,7 +43,7 @@ function Login() {
   }
 
   return (
-    <div className="w-full h-full flex justify-center items-center text-black">
+    <div className="w-full min-h-screen flex justify-center items-center text-black bg-gray-300">
       <div className="bg-pink-300 flex justify-center items-center flex-col p-4 rounded-xl gap-3 w-1/4">
         {message.length > 0 ? (
           <p><em className="font-bold text-2xl text-center">{message}</em></p>

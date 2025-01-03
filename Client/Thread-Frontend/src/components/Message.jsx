@@ -34,7 +34,7 @@ function Message() {
 
     const handleClose = () => {
         setShowModal(false);
-        navigate('/');
+        navigate('/users');
     };
 
     async function getMessage() {

@@ -55,6 +55,7 @@ async function handleUnfollow(id){
         <Link className='font-bold' to = {`/user/${user._id}`}>{user.name}</Link>
         <p className='text-neutral-500'>{user.username}</p>
       </div>
+      <div className='flex flex-col gap-2'>
       {isFollow ? (
         <button 
         className='p-2 bg-blue-500 rounded text-white font-bold'
@@ -64,6 +65,8 @@ async function handleUnfollow(id){
       className='p-2 bg-blue-500 rounded text-white font-bold'
       onClick={()=>handleFollow(user._id)}>Follow</button>
       )}
+      <Link className='p-2 bg-blue-500 rounded text-white font-bold' to={`/messenger/${user._id}`}>Message</Link>
+      </div>
       
     </div>
   )

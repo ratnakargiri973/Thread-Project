@@ -15,9 +15,10 @@ function VerifyOtp() {
     navigate("/change-password");
   };
   return (
-    <div className='w-full h-full flex flex-col justify-center items-center'>
+    <div className='w-full min-h-screen flex flex-col justify-center items-center bg-gray-300'>
+      
+      <form onSubmit={handleSubmit} className='flex  flex-col gap-4 bg-pink-300 px-12 py-8 rounded justify-center items-center'>
       <h2 className='font-bold text-2xl'>Verify OTP</h2>
-      <form onSubmit={handleSubmit} className='flex gap-2 justify-center items-center'>
         <input
           type="text"
           placeholder="Enter your username"
@@ -32,7 +33,7 @@ function VerifyOtp() {
           onChange={(e) => setOtp(e.target.value)}
           className='border-none outline-none p-2 rounded'
         />
-        <button type="submit" className='p-2 rounded bg-blue-500 text-white'>Verify</button>
+        <button type="submit" className='p-2 rounded bg-blue-500 text-white w-full'>Verify</button>
       </form>
       {message && <p>{message}</p>}
     </div>
