@@ -27,7 +27,6 @@ function Profile() {
             const response = await instance.get("/user/profile", {
                 withCredentials: true
             });
-            // console.log(response.data);
             setData(response.data);
         } catch (error) {
             console.log(error)

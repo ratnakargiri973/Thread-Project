@@ -57,7 +57,8 @@ function SingleUser() {
              <p className='font-bold'>{user.name}</p>
              <p className='text-gray-700 text-center'>{user.bio}</p>
              </div>
-        <div className='w-1/2 flex justify-between items-center pt-12'>
+        <div className='w-1/2 flex flex-col gap-4'>
+        <div className='w-full flex justify-between items-center pt-12'>
              <div className='flex flex-col gap-2 justify-center items-center'>
                 <span>{followersCount}</span>
                  <Link className='font-bold'>Followers</Link>
@@ -67,6 +68,8 @@ function SingleUser() {
                 <Link className='font-bold'>Following</Link>
             </div>
          </div>
+         <Link className='w-full bg-blue-500 rounded text-white p-2 font-bold text-center' to={`/messenger/${id}`}>Message</Link>
+         </div>
         </div>
      </div>
         )
@@ -75,4 +78,4 @@ function SingleUser() {
   )
 }
 
-export default SingleUser
+export default SingleUser;

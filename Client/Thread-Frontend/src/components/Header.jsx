@@ -60,7 +60,7 @@ function Header() {
         <ul className='flex justify-center items-center text-white gap-4'>
           <Link className='text-2xl'><IoIosHome /></Link>
           <Link className='text-2xl' to="/users"><FaUserFriends /></Link>
-          <Link className='text-xl'><SiMessenger /></Link>
+          {/* <Link className='text-xl' to='/messenger'><SiMessenger /></Link> */}
           <li className="relative" ref={dropdownRef}>
               <button
                 onClick={handleDropdown}

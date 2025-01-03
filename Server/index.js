@@ -6,6 +6,7 @@ import cookieParser from 'cookie-parser';
 import authRoute from './router/authRoute.js';
 import cors from 'cors';
 import followRouter from './router/followRouter.js';
+import messageRouter from './router/messageRouter.js';
 
 
 const PORT = process.env.PORT;
@@ -28,7 +29,8 @@ app.use(express.json());
 
 app.use('/api/v1/user', userRouter);
 app.use('/api/v1/auth', authRoute);
-app.use('/api/v1/follower', followRouter)
+app.use('/api/v1/follower', followRouter);
+app.use('/api/v1/message', messageRouter);
 
 await connectDB();
 

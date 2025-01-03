@@ -13,7 +13,8 @@ import ChangePassword from './pages/ChangePassword'
 import ProfilePicture from './components/ProfilePicture'
 import ProfileContext from './contexts/ProfileContext'
 import Users from './pages/Users'
-import SingleUser from './pages/singleUser'
+import SingleUser from './pages/SingleUser'
+import Message from './components/Message'
 
 function AppWrapper(){
   return(
@@ -72,6 +73,9 @@ function App() {
       {
         path: "/user/:id",
         element: <SingleUser />
+      },{
+        path: '/messenger/:id',
+        element: <Message />
       }
     ]
   }])
