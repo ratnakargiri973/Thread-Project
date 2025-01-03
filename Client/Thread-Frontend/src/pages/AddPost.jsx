@@ -11,7 +11,7 @@ function AddPost() {
 
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
-    const notify = () => toast("Profile Picture uploaded !!!");
+    const notify = () => toast("Your Post uploaded successfully !!!");
 
     async function handleChange(e){
         if (e.target.name === "image") {
@@ -33,6 +33,7 @@ function AddPost() {
        try {
         await instance.post("/post/add", formdata);
         setSuccess("Post added successfully");
+        notify();
         setFormData({
            title:"",
            content: "",
