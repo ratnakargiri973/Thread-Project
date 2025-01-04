@@ -10,7 +10,7 @@ import messageRouter from './router/messageRouter.js';
 import postRouter from './router/postRouter.js';
 
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 
@@ -21,7 +21,7 @@ const corsOption = {
   allowedHeaders: ["Content-Type", "Authorization"],
 }
 
-app.use(cors(corsOption));
+app.use(cors());
 
 app.use(cookieParser());
 
