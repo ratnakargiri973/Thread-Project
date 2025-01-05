@@ -45,4 +45,8 @@
     }
 }
 
+** https://thread-project.onrender.com/api/v1/user/forgot-password (Forgot-Password) **
+{
+    "message": "Password reset email sent successfully"
+}
 
