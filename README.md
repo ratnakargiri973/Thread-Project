@@ -178,3 +178,76 @@
     ]
 }
 
+
+** https://thread-project.onrender.com/api/v1/post/add [add post] **
+
+{
+    "message": "Your post uploaded successfully",
+    "post": {
+        "title": "My Third Book",
+        "image": "https://res.cloudinary.com/dk9b873qc/image/upload/v1736064073/thread/vhecmwbu64fyihv6q6ng.jpg",
+        "content": "Another day another book",
+        "author": "Xyz",
+        "authorId": "677a38aa5fbb1dddd813681a",
+        "likes": [],
+        "comments": [],
+        "_id": "677a3c4a5fbb1dddd8136822",
+        "createdAt": "2025-01-05T08:01:14.258Z",
+        "updatedAt": "2025-01-05T08:01:14.258Z",
+        "__v": 0
+    }
+}
+
+
+
+** https://thread-project.onrender.com/api/v1/post [get all posts] **
+
+{
+    "message": "Success",
+    "posts": [
+        {
+            "_id": "67795640f11137b28ce5010d",
+            "title": "My First Book",
+            "image": "https://res.cloudinary.com/dk9b873qc/image/upload/v1736005183/thread/zwoa3nsjtdtusd8oct8x.jpg",
+            "content": "Excited to read this book",
+            "author": "Ratnakar",
+            "authorId": "67760e51086b5ab6288279bf",
+            "likes": [
+                "67760e51086b5ab6288279bf"
+            ],
+            "comments": [
+                {
+                    "user": "Ratnakar",
+                    "userId": "67760e51086b5ab6288279bf",
+                    "comment": "Great book i have ever read",
+                    "_id": "67795659f11137b28ce50117",
+                    "createdAt": "2025-01-04T15:40:09.846Z",
+                    "updatedAt": "2025-01-04T15:40:27.500Z"
+                }
+            ],
+            "createdAt": "2025-01-04T15:39:44.316Z",
+            "updatedAt": "2025-01-04T15:40:37.315Z",
+            "__v": 4
+        },
+        {
+            "_id": "677a3c4a5fbb1dddd8136822",
+            "title": "My Third Book",
+            "image": "https://res.cloudinary.com/dk9b873qc/image/upload/v1736064073/thread/vhecmwbu64fyihv6q6ng.jpg",
+            "content": "Another day another book",
+            "author": "Xyz",
+            "authorId": "677a38aa5fbb1dddd813681a",
+            "likes": [],
+            "comments": [],
+            "createdAt": "2025-01-05T08:01:14.258Z",
+            "updatedAt": "2025-01-05T08:01:14.258Z",
+            "__v": 0
+        }
+    ]
+}
+
+
+** https://thread-project.onrender.com/api/v1/post/delete/677a3c4a5fbb1dddd8136822 [delete the post] **
+
+{
+    "message": "Post deleted successfully"
+}
