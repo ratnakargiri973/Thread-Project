@@ -32,4 +32,17 @@
     }
 }
 
+** https://thread-project.onrender.com/api/v1/user/login **
+
+{
+    "message": "User logged in successfully",
+    "loggedInUser": {
+        "_id": "677a38aa5fbb1dddd813681a",
+        "name": "Xyz Giri",
+        "username": "Xyz",
+        "email": "xyz123@gmail.com",
+        "phone": 9198461423
+    }
+}
+
 
