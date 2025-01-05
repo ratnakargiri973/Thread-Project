@@ -7,7 +7,7 @@
 ## Password: 123456
 
 
-** https://thread-project.onrender.com/api/v1/user/register **
+** https://thread-project.onrender.com/api/v1/user/register  (User Registration) **
 
 {
     "message": "User registered successfully",
@@ -32,7 +32,7 @@
     }
 }
 
-** https://thread-project.onrender.com/api/v1/user/login **
+** https://thread-project.onrender.com/api/v1/user/login  (User Login) **
 
 {
     "message": "User logged in successfully",
